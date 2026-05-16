@@ -257,7 +257,7 @@ Stage 3: Mental Health Buddy
 
 The baseline autoregressive ASR model produces:
 
-$$P(y \mid X) = \prod_{t=1}^{T} P(y_t \mid y_{<t}, X)$$
+$$P(y \mid X) = \prod\_{t=1}^{T} P(y\_t \mid y\_{\lt t}, X)$$
 
 Where:
 - $X$: acoustic feature sequence (input audio)
