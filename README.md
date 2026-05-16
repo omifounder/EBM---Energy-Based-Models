@@ -94,23 +94,23 @@ Where:
 
 **Three-Stage Solution**:
 
-Stage 1: Robust ASR Foundation
-├── Baseline: Conformer-RNNT (locally normalized)
-├── Enhancement: Residual energy model (global scoring)
-└── Output: Calibrated transcripts with reliable confidence
+Stage 1: Robust ASR Foundation <br>
+├── Baseline: Conformer-RNNT (locally normalized) <br>
+├── Enhancement: Residual energy model (global scoring) <br>
+└── Output: Calibrated transcripts with reliable confidence <br>
 
-Stage 2: Emotion Understanding
-├── Voice Branch: wav2vec 2.0 + prosody features
-├── Text Branch: ASR transcript → BERT sentiment
-├── Fusion: Energy-based voice-text consistency scoring
-└── Output: Emotions + inconsistency detection (depression biomarker)
+Stage 2: Emotion Understanding <br>
+├── Voice Branch: wav2vec 2.0 + prosody features <br>
+├── Text Branch: ASR transcript → BERT sentiment <br>
+├── Fusion: Energy-based voice-text consistency scoring <br>
+└── Output: Emotions + inconsistency detection (depression biomarker) <br>
 
-Stage 3: Mental Health Buddy
-├── Input: Speech audio
-├── Processing: ASR → Emotion → Consistency → Context
-├── Generation: Template-based empathetic responses
-├── Safety: Crisis detection + guardrails
-└── Output: Safe, context-aware support
+Stage 3: Mental Health Buddy <br>
+├── Input: Speech audio <br>
+├── Processing: ASR → Emotion → Consistency → Context <br>
+├── Generation: Template-based empathetic responses <br>
+├── Safety: Crisis detection + guardrails <br>
+└── Output: Safe, context-aware support <br>
 
 
 ---
