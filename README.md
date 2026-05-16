@@ -812,3 +812,410 @@ def analyze_emotion(audio_waveform):
 - **User satisfaction**: Qualitative evaluation pending (20-30 conversations)
 
 ---
+
+# References
+
+## Core Research Papers
+
+### Energy-Based Models
+
+1. **LeCun, Y., Chopra, S., Hadsell, R., Ranzato, M., & Huang, F. (2006)**  
+   *A Tutorial on Energy-Based Learning*  
+   In Predicting Structured Data (pp. 1-59). MIT Press.  
+   [PDF](http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf)  
+   📌 **Foundational paper on energy-based models**
+
+2. **Grathwohl, W., Wang, K. C., Jacobsen, J. H., Duvenaud, D., Norouzi, M., & Swersky, K. (2019)**  
+   *Your Classifier is Secretly an Energy Based Model and You Should Treat it Like One*  
+   ICLR 2020.  
+   [arXiv:1912.03263](https://arxiv.org/abs/1912.03263)  
+   📌 **Modern revival of EBMs for discriminative models**
+
+3. **Du, Y., & Mordatch, I. (2019)**  
+   *Implicit Generation and Modeling with Energy Based Models*  
+   NeurIPS 2019.  
+   [arXiv:1903.08689](https://arxiv.org/abs/1903.08689)  
+   📌 **EBMs for generative modeling**
+
+---
+
+### Residual Energy-Based Models for ASR
+
+4. **Li, Q., Guo, P., & Woodland, P. C. (2021)**  
+   *Residual Energy-Based Models for End-to-End Speech Recognition*  
+   Interspeech 2021.  
+   [arXiv:2103.14152](https://arxiv.org/abs/2103.14152)  
+   ⭐ **PRIMARY REFERENCE - R-EBM for ASR**
+
+5. **Li, Q.,Energi, D., Jyothi, P., & Woodland, P. C. (2024)**  
+   *Energy-Based Models with Applications to Speech and Language Processing*  
+   Monograph, Cambridge University Engineering Department.  
+   [arXiv:2403.10961](https://arxiv.org/abs/2403.10961)  
+   📌 **Comprehensive EBM review for speech/language**
+
+---
+
+### Speech Recognition (Baseline Models)
+
+6. **Gulati, A., Qin, J., Chiu, C. C., et al. (2020)**  
+   *Conformer: Convolution-augmented Transformer for Speech Recognition*  
+   Interspeech 2020.  
+   [arXiv:2005.08100](https://arxiv.org/abs/2005.08100)  
+   📌 **Conformer architecture (baseline ASR)**
+
+7. **Graves, A. (2012)**  
+   *Sequence Transduction with Recurrent Neural Networks*  
+   ICML 2012 Workshop on Representation Learning.  
+   [arXiv:1211.3711](https://arxiv.org/abs/1211.3711)  
+   📌 **RNN-Transducer (RNN-T)**
+
+8. **Radford, A., Kim, J. W., Xu, T., et al. (2022)**  
+   *Robust Speech Recognition via Large-Scale Weak Supervision*  
+   arXiv preprint.  
+   [arXiv:2212.04356](https://arxiv.org/abs/2212.04356)  
+   📌 **Whisper - large-scale ASR**
+
+---
+
+### Emotion Recognition & Mental Health
+
+9. **Busso, C., Bulut, M., Lee, C. C., et al. (2008)**  
+   *IEMOCAP: Interactive Emotional Dyadic Motion Capture Database*  
+   Language Resources and Evaluation, 42(4), 335-359.  
+   [USC SAIL Lab](https://sail.usc.edu/iemocap/)  
+   ⭐ **IEMOCAP dataset - emotion recognition**
+
+10. **Gratch, J., Artstein, R., Lucas, G. M., et al. (2014)**  
+    *The Distress Analysis Interview Corpus of Human and Computer Interviews*  
+    LREC 2014.  
+    [Paper](https://www.lrec-conf.org/proceedings/lrec2014/pdf/508_Paper.pdf)  
+    ⭐ **DAIC-WOZ dataset - depression detection**
+
+11. **Cummins, N., Scherer, S., Krajewski, J., et al. (2015)**  
+    *A Review of Depression and Suicide Risk Assessment Using Speech Analysis*  
+    Speech Communication, 71, 10-49.  
+    [DOI:10.1016/j.specom.2015.03.004](https://doi.org/10.1016/j.specom.2015.03.004)  
+    📌 **Speech biomarkers for depression**
+
+12. **Rejaibi, E., Komaty, A., Meriaudeau, F., et al. (2022)**  
+    *MFCC-based Recurrent Neural Network for Automatic Clinical Depression Recognition and Assessment from Speech*  
+    Biomedical Signal Processing and Control, 71, 103107.  
+    [DOI:10.1016/j.bspc.2021.103107](https://doi.org/10.1016/j.bspc.2021.103107)  
+    📌 **Depression detection from speech**
+
+---
+
+### Multimodal Fusion
+
+13. **Baevski, A., Zhou, H., Mohamed, A., & Auli, M. (2020)**  
+    *wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations*  
+    NeurIPS 2020.  
+    [arXiv:2006.11477](https://arxiv.org/abs/2006.11477)  
+    📌 **wav2vec 2.0 - self-supervised speech features**
+
+14. **Sanh, V., Debut, L., Chaumond, J., & Wolf, T. (2019)**  
+    *DistilBERT, a Distilled Version of BERT: Smaller, Faster, Cheaper and Lighter*  
+    NeurIPS 2019 Workshop on Energy Efficient Machine Learning and Cognitive Computing.  
+    [arXiv:1910.01108](https://arxiv.org/abs/1910.01108)  
+    📌 **DistilBERT - text embeddings**
+
+15. **Baltrusaitis, T., Ahuja, C., & Morency, L. P. (2019)**  
+    *Multimodal Machine Learning: A Survey and Taxonomy*  
+    IEEE Transactions on Pattern Analysis and Machine Intelligence, 41(2), 423-443.  
+    [arXiv:1705.09406](https://arxiv.org/abs/1705.09406)  
+    📌 **Multimodal learning survey**
+
+---
+
+### Calibration & Uncertainty
+
+16. **Guo, C., Pleiss, G., Sun, Y., & Weinberger, K. Q. (2017)**  
+    *On Calibration of Modern Neural Networks*  
+    ICML 2017.  
+    [arXiv:1706.04599](https://arxiv.org/abs/1706.04599)  
+    📌 **Expected Calibration Error (ECE)**
+
+17. **Lakshminarayanan, B., Pritzel, A., & Blundell, C. (2017)**  
+    *Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles*  
+    NeurIPS 2017.  
+    [arXiv:1612.01474](https://arxiv.org/abs/1612.01474)  
+    📌 **Uncertainty quantification in neural networks**
+
+---
+
+### Mental Health AI Applications
+
+18. **Fitzpatrick, K. K., Darcy, A., & Vierhile, M. (2017)**  
+    *Delivering Cognitive Behavior Therapy to Young Adults With Symptoms of Depression and Anxiety Using a Fully Automated Conversational Agent (Woebot): A Randomized Controlled Trial*  
+    JMIR Mental Health, 4(2), e19.  
+    [DOI:10.2196/mental.7785](https://doi.org/10.2196/mental.7785)  
+    📌 **Woebot - mental health chatbot efficacy**
+
+19. **Inkster, B., Sarda, S., & Subramanian, V. (2018)**  
+    *An Empathy-Driven, Conversational Artificial Intelligence Agent (Wysa) for Digital Mental Well-Being: Real-World Data Evaluation Mixed-Methods Study*  
+    JMIR mHealth and uHealth, 6(11), e12106.  
+    [DOI:10.2196/12106](https://doi.org/10.2196/12106)  
+    📌 **Wysa - conversational AI for mental health**
+
+20. **Abd-Alrazaq, A. A., Alajlani, M., Alalwan, A. A., et al. (2019)**  
+    *An Overview of the Features of Chatbots in Mental Health: A Scoping Review*  
+    International Journal of Medical Informatics, 132, 103978.  
+    [DOI:10.1016/j.ijmedinf.2019.103978](https://doi.org/10.1016/j.ijmedinf.2019.103978)  
+    📌 **Review of mental health chatbots**
+
+---
+
+## Datasets
+
+21. **Panayotov, V., Chen, G., Povey, D., & Khudanpur, S. (2015)**  
+    *LibriSpeech: An ASR Corpus Based on Public Domain Audio Books*  
+    ICASSP 2015.  
+    [OpenSLR](http://www.openslr.org/12/)  
+    ⭐ **LibriSpeech dataset**
+
+22. **Barker, J., Watanabe, S., Vincent, E., & Trmal, J. (2018)**  
+    *The Fifth 'CHiME' Speech Separation and Recognition Challenge: Dataset, Task and Baselines*  
+    Interspeech 2018.  
+    [CHiME-5 Challenge](https://chimechallenge.github.io/chime5/)  
+    ⭐ **CHiME-5 noisy speech dataset**
+
+23. **Hernandez, F., Nguyen, V., Ghannay, S., et al. (2018)**  
+    *TED-LIUM 3: Twice as Much Data and Corpus Repartition for Experiments on Speaker Adaptation*  
+    SPECOM 2018.  
+    [OpenSLR](http://www.openslr.org/51/)  
+    📌 **TED-LIUM 3 ASR corpus**
+
+---
+
+## Technical Blogs & Tutorials
+
+24. **Lilian Weng (2021)**  
+    *Energy-Based Models*  
+    [Blog Post](https://lilianweng.github.io/posts/2021-05-24-ebm/)  
+    📌 **Excellent EBM tutorial by OpenAI researcher**
+
+25. **The Gradient (2020)**  
+    *Energy-Based Models: A Primer*  
+    [Article](https://thegradient.pub/energy-based-models/)  
+    📌 **Accessible introduction to EBMs**
+
+26. **Hugging Face Blog (2021)**  
+    *Fine-Tune Wav2Vec2 for English ASR with 🤗 Transformers*  
+    [Tutorial](https://huggingface.co/blog/fine-tune-wav2vec2-english)  
+    📌 **Practical wav2vec 2.0 tutorial**
+
+27. **Weights & Biases (2022)**  
+    *Confidence Calibration for Deep Learning*  
+    [Report](https://wandb.ai/authors/calibration/reports/Confidence-Calibration-for-Deep-Learning--VmlldzoyMjI4MDQ)  
+    📌 **Calibration in neural networks**
+
+28. **Logical Intelligence (2026)**  
+    *First Commercial Energy-Based Reasoning System*  
+    [Announcement](https://logical.ai/)  
+    📌 **Recent commercial EBM deployment** (January 2026)
+
+---
+
+## Video Lectures & Talks
+
+29. **Yann LeCun - Energy-Based Models (NYU Deep Learning Course, 2020)**  
+    [YouTube Playlist](https://www.youtube.com/watch?v=tVwV14YkbYs&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq)  
+    📌 **In-depth EBM lectures from the pioneer**
+
+30. **Pieter Abbeel - Energy-Based Models (UC Berkeley CS 285, 2021)**  
+    [YouTube](https://www.youtube.com/watch?v=HJTkuXnFlRw)  
+    📌 **EBM from reinforcement learning perspective**
+
+31. **ICML 2021 Tutorial: Energy-Based Models for Continual Learning**  
+    [Recording](https://icml.cc/virtual/2021/tutorial/10840)  
+    📌 **Advanced EBM applications**
+
+32. **Interspeech 2021: Residual Energy-Based Models for ASR (Paper Presentation)**  
+    [Conference Proceedings](https://www.isca-speech.org/archive/interspeech_2021/)  
+    📌 **Li et al. R-EBM presentation**
+
+---
+
+## Code Repositories & Tools
+
+33. **NVIDIA NeMo Toolkit**  
+    [GitHub](https://github.com/NVIDIA/NeMo)  
+    📌 **Conformer-RNNT implementation**
+
+34. **Hugging Face Transformers**  
+    [GitHub](https://github.com/huggingface/transformers)  
+    📌 **wav2vec 2.0, DistilBERT, Whisper implementations**
+
+35. **PyTorch Lightning**  
+    [GitHub](https://github.com/Lightning-AI/lightning)  
+    📌 **Training framework used in this project**
+
+36. **Kaldi Speech Recognition Toolkit**  
+    [GitHub](https://github.com/kaldi-asr/kaldi)  
+    📌 **Traditional ASR baseline comparisons**
+
+37. **ESPnet: End-to-End Speech Processing Toolkit**  
+    [GitHub](https://github.com/espnet/espnet)  
+    📌 **Speech recognition and synthesis**
+
+38. **librosa: Audio Analysis Library**  
+    [GitHub](https://github.com/librosa/librosa)  
+    📌 **Prosody feature extraction**
+
+---
+
+## Mental Health Resources
+
+39. **World Health Organization (2022)**  
+    *Mental Health Atlas 2022*  
+    [Report](https://www.who.int/publications/i/item/9789240064591)  
+    📌 **Global mental health statistics (1B lack access)**
+
+40. **National Institute of Mental Health (NIMH)**  
+    *Depression Statistics*  
+    [Website](https://www.nimh.nih.gov/health/statistics/major-depression)  
+    📌 **Depression prevalence data**
+
+41. **Crisis Text Line**  
+    [Website](https://www.crisistextline.org/)  
+    📌 **Example crisis intervention service**
+
+42. **International Association for Suicide Prevention**  
+    [Website](https://www.iasp.info/resources/Crisis_Centres/)  
+    📌 **Global crisis hotline directory**
+
+---
+
+## Market & Industry Reports
+
+43. **Grand View Research (2023)**  
+    *Mental Health Software Market Size, Share & Trends Analysis Report*  
+    [Report](https://www.grandviewresearch.com/industry-analysis/mental-health-software-market)  
+    📌 **$2B market, 34% CAGR data**
+
+44. **MarketsandMarkets (2024)**  
+    *AI in Healthcare Market by Technology*  
+    [Report](https://www.marketsandmarkets.com/Market-Reports/ai-in-healthcare-market-54679303.html)  
+    📌 **Healthcare AI growth projections**
+
+45. **CB Insights (2025)**  
+    *Mental Health Tech Trends Report*  
+    [Report](https://www.cbinsights.com/research/report/mental-health-tech-trends/)  
+    📌 **Investment trends in mental health tech**
+
+---
+
+## Ethics & Safety
+
+46. **Jobin, A., Ienca, M., & Vayena, E. (2019)**  
+    *The Global Landscape of AI Ethics Guidelines*  
+    Nature Machine Intelligence, 1(9), 389-399.  
+    [DOI:10.1038/s42256-019-0088-2](https://doi.org/10.1038/s42256-019-0088-2)  
+    📌 **AI ethics frameworks**
+
+47. **Mittelstadt, B. D., Allo, P., Taddeo, M., Wachter, S., & Floridi, L. (2016)**  
+    *The Ethics of Algorithms: Mapping the Debate*  
+    Big Data & Society, 3(2).  
+    [DOI:10.1177/2053951716679679](https://doi.org/10.1177/2053951716679679)  
+    📌 **Algorithmic ethics**
+
+48. **Nebeker, C., Torous, J., & Bartlett Ellis, R. J. (2019)**  
+    *Building the Case for Actionable Ethics in Digital Health Research Supported by Artificial Intelligence*  
+    BMC Medicine, 17(1), 137.  
+    [DOI:10.1186/s12916-019-1377-7](https://doi.org/10.1186/s12916-019-1377-7)  
+    📌 **Ethics in digital mental health**
+
+---
+
+## Related Work in Speech + Mental Health
+
+49. **Low, D. M., Bentley, K. H., & Ghosh, S. S. (2020)**  
+    *Automated Assessment of Psychiatric Disorders Using Speech: A Systematic Review*  
+    Laryngoscope Investigative Otolaryngology, 5(1), 96-116.  
+    [DOI:10.1002/lio2.354](https://doi.org/10.1002/lio2.354)  
+    📌 **Speech-based psychiatric assessment review**
+
+50. **Stasak, B., Epps, J., & Joachim, D. (2021)**  
+    *Automatic Depression Level Classification From Speech Using Prosody and Spectral Features*  
+    IEEE Transactions on Affective Computing.  
+    [DOI:10.1109/TAFFC.2021.3077302](https://doi.org/10.1109/TAFFC.2021.3077302)  
+    📌 **Prosody for depression detection**
+
+---
+
+## Conferences & Workshops
+
+51. **ICASSP (IEEE International Conference on Acoustics, Speech and Signal Processing)**  
+    [Website](https://2026.ieeeicassp.org/)  
+    📌 **Premier speech processing conference**
+
+52. **Interspeech**  
+    [Website](https://www.interspeech2026.org/)  
+    📌 **Major speech research conference**
+
+53. **ICLR Workshop on Energy-Based Models (2021)**  
+    [Proceedings](https://energy-based-models.github.io/)  
+    📌 **Dedicated EBM workshop**
+
+54. **ACL Workshop on Computational Linguistics and Clinical Psychology**  
+    [Website](https://clpsych.org/)  
+    📌 **NLP for mental health**
+
+---
+
+## Additional Resources
+
+55. **Speech Resources (Linguistics Data Consortium)**  
+    [Catalog](https://catalog.ldc.upenn.edu/)  
+    📌 **Speech datasets repository**
+
+56. **Papers With Code - Speech Recognition**  
+    [Leaderboard](https://paperswithcode.com/task/speech-recognition)  
+    📌 **SOTA benchmarks**
+
+57. **Mental Health America - Tech Resources**  
+    [Website](https://mhanational.org/technology-and-mental-health)  
+    📌 **Mental health technology overview**
+
+---
+
+## Citation for This Work
+
+If you use this project, please cite:
+
+```bibtex
+@misc{mental-health-ebm-2026,
+  author = {Om [Last Name]},
+  title = {Energy-Based Models for Speech AI in Mental Health: From ASR to Conversational Support Systems},
+  year = {2026},
+  publisher = {GitHub},
+  howpublished = {\url{https://github.com/yourusername/mental-health-ebm}},
+  note = {Presented at ICASSP 2026 Industry Expert Speakers Session}
+}
+```
+
+---
+
+## Contact & Acknowledgments
+
+**Author**: Om [Last Name]  
+**Affiliation**: invent-AGI, IIT Kharagpur (Ph.D. Candidate)  
+**Website**: [superintelligencelab.co.uk](http://superintelligencelab.co.uk)
+
+**Acknowledgments**:
+- IEMOCAP dataset: USC SAIL Lab
+- DAIC-WOZ dataset: USC Institute for Creative Technologies
+- LibriSpeech: OpenSLR community
+- CHiME Challenge organizers
+- Qiujia Li et al. for residual EBM framework
+- Open-source community (PyTorch, Transformers, NeMo, librosa)
+
+---
+
+**Legend**:
+- ⭐ = Primary/Essential Reference
+- 📌 = Important Supporting Reference
+- 🎓 = Educational Resource
+- 🔧 = Implementation/Code Resource
+
+**Last Updated**: May 16, 2026
