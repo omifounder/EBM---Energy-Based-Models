@@ -9,7 +9,7 @@
 
 The baseline autoregressive ASR model produces:
 
-$$P(y \mid X) = \prod_{t=1}^{T} P(y_t \mid y_{<t}, X)$$
+P(y | X) = ∏(t=1 to T) P(yₜ | y₍<t₎, X)
 
 Where:
 - $X$: acoustic feature sequence (input audio)
