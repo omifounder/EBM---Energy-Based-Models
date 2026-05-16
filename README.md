@@ -480,149 +480,70 @@ The emotion recognition system uses energy-based multimodal fusion to:
 
 ### 4.2 Architecture Diagram
 ┌─────────────────────────────────────────────────────────────────────┐
-│ Audio Input Waveform │
+│                         Audio Input Waveform                        │
 └─────────────────────────────────────────────────────────────────────┘
-│
-┌───────────────┴───────────────┐
-│ │
-▼ ▼
-┌───────────────────────┐ ┌──────────────────────┐
-│ Voice Branch │ │ Text Branch │
-│ │ │ │
-│ (Prosody Analysis) │ │ (Sentiment) │
-└───────────────────────┘ └──────────────────────┘
-│ │
-▼ ▼
-┌───────────────────────┐ ┌──────────────────────┐
-│ wav2vec 2.0 │ │ ASR R-EBM │
-│ (Pre-trained) │ │ │
-│ │ │ Audio → Transcript │
-│ Audio [N samples] │ │ │
-│ ↓ │ └──────────────────────┘
-│ Features [T×768] │ │
-└───────────────────────┘ │
-│ ▼
-▼ ┌──────────────────────┐
-┌───────────────────────┐ │ DistilBERT │
-│ Prosody Extractor │ │ (Pre-trained) │
-│ (librosa) │ │ │
-│ │ │ Transcript tokens │
-│ Extract: │ │ ↓ │
-│ - F0 (pitch) │ │ Embeddings [L×768] │
-│ - Energy (RMS) │ │ ↓ │
-│ - Speech rate │ │ [CLS] token │
-│ - Pause duration │ │ ↓ │
-│ - F0 variance │ │ Text emb │
-│ │ │ │
-│ Output: [T×5] │ └──────────────────────┘
-└───────────────────────┘ │
-│ │
-▼ │
-┌───────────────────────┐ │
-│ Concatenate: │ │
-│ wav2vec + prosody │ │
-│ │ │
-│ [T×(768+5)] = [T×773]│ │
-└───────────────────────┘ │
-│ │
-▼ │
-┌───────────────────────┐ │
-│ BiLSTM │ │
-│ (voice sequence) │ │
-│ │ │
-│ Input: [T×773] │ │
-│ hidden: 256 │ │
-│ layers: 2 │ │
-│ bidirectional: True │ │
-│ Output: [T×512] │ │
-└───────────────────────┘ │
-│ │
-▼ │
-┌───────────────────────┐ │
-│ Mean Pooling │ │
-│ (over time) │ │
-│ │ │
-│ Output: │ │
-│ │ │
-│ = v_emb │ │
-└───────────────────────┘ │
-│ │
-│ │
-│ = t_emb
-│ │
-│ │
-└──────────┬────────────────────┘
-│
-▼
-┌────────────────────────────┐
-│ Projection Layer │
-│ │
-│ v_proj = Linear(512→768) │
-│ (v_emb) │
-│ │
-│ Now both embeddings │
-│ have dimension 768 │
-└────────────────────────────┘
-│
-▼
-┌────────────────────────────┐
-│ Multimodal Fusion │
-│ │
-│ Construct feature vector: │
-│ │
-│ f = [v_proj, │
-│ t_emb, │
-│ (v_proj - t_emb), │ ← Inconsistency
-│ (v_proj ⊙ t_emb)] │ ← Interaction
-│ │
-│ Dim: [768+768+768+768] │
-│ = │
-└────────────────────────────┘
-│
-▼
-┌────────────────────────────┐
-│ Fusion MLP │
-│ │
-│ Layer 1: │
-│ Linear(3072 → 1024) │
-│ + LayerNorm │
-│ + ReLU │
-│ + Dropout(0.3) │
-│ │
-│ Layer 2: │
-│ Linear(1024 → 512) │
-│ + LayerNorm │
-│ + ReLU │
-│ + Dropout(0.3) │
-│ │
-│ Output: = h_fused │
-└────────────────────────────┘
-│
-▼
-┌────────────────────────────┐
-│ Multi-Task Heads │
-└────────────────────────────┘
-│
-┌─────────────────┼─────────────────┬──────────────────┐
-│ │ │ │
-▼ ▼ ▼ ▼
-┌────────────────┐ ┌──────────────┐ ┌──────────────┐ ┌─────────────────┐
-│ Emotion Head │ │ Consistency │ │ Depression │ │ Energy Score │
-│ │ │ Head │ │ Head │ │ Head │
-│ Linear(512→5) │ │ Linear(512→1)│ │ Linear(512→1)│ │ Linear(512→1) │
-│ + Softmax │ │ + Sigmoid │ │ + Sigmoid │ │ (no activation) │
-│ │ │ │ │ │ │ │
-│ Classes: │ │ Match │ │ Depressed │ │ E_emotion(v,t) │
-│ - Sad │ │ probability │ │ probability │ │ ∈ ℝ │
-│ - Anxious │ │ │ │ │ │ │
-
-│ - Frustrated │ │ │ │ │ │ High energy = │
-│ - Neutral │ │ │ │ │ │ voice-text │
-│ - Happy │ │ │ │ │ │ mismatch │
-│ │ │ │ │ │ │ │
-│ Output: │ │ Output: │ │ Output: │ │ Output: │
-
-└────────────────┘ └──────────────┘ └──────────────┘ └─────────────────┘
+                                │
+                ┌───────────────┴───────────────┐
+                │                               │
+                ▼                               ▼
+    ┌───────────────────────┐       ┌──────────────────────┐
+    │   VOICE BRANCH        │       │   TEXT BRANCH        │
+    │   (Green)             │       │   (Orange)           │
+    └───────────────────────┘       └──────────────────────┘
+                │                               │
+                ▼                               ▼
+    ┌───────────────────────┐       ┌──────────────────────┐
+    │  wav2vec 2.0          │       │   ASR R-EBM          │
+    │  Features [T×768]     │       │   → Transcript       │
+    └───────────────────────┘       └──────────────────────┘
+                │                               │
+                ▼                               ▼
+    ┌───────────────────────┐       ┌──────────────────────┐
+    │  Prosody Extractor    │       │   DistilBERT         │
+    │  [T×5]                │       │   [CLS] → [768]      │
+    └───────────────────────┘       └──────────────────────┘
+                │                               │
+                ▼                               │
+    ┌───────────────────────┐                   │
+    │  Concat [T×773]       │                   │
+    │  BiLSTM → [T×512]     │                   │
+    │  Mean Pool → [512]    │                   │
+    │  Project → [768]      │                   │
+    │  = v_proj             │                   │
+    └───────────────────────┘                   │
+                │                      = t_emb [768]
+                │                               │
+                └───────────┬───────────────────┘
+                            │
+                            ▼
+              ┌─────────────────────────────┐
+              │   MULTIMODAL FUSION         │
+              │   (Purple)                  │
+              │                             │
+              │   f = [v_proj ⊕ t_emb ⊕    │
+              │        (v_proj - t_emb) ⊕  │
+              │        (v_proj ⊙ t_emb)]   │
+              │   [3072]                    │
+              └─────────────────────────────┘
+                            │
+                            ▼
+              ┌─────────────────────────────┐
+              │   Fusion MLP                │
+              │   Layer 1: [3072→1024]      │
+              │   Layer 2: [1024→512]       │
+              │   → h_fused [512]           │
+              └─────────────────────────────┘
+                            │
+         ┌──────────────────┼──────────────────┬─────────────┐
+         │                  │                  │             │
+         ▼                  ▼                  ▼             ▼
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│ Emotion      │  │ Consistency  │  │ Depression   │  │ Energy       │
+│ [512→5]      │  │ [512→1]      │  │ [512→1]      │  │ [512→1]      │
+│ Softmax      │  │ Sigmoid      │  │ Sigmoid      │  │ (raw)        │
+│              │  │              │  │              │  │              │
+│ 5 emotions   │  │ Match prob   │  │ Depressed    │  │ E_emotion    │
+└──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘
 
 
 ### 4.3 Component Details
