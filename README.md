@@ -1190,7 +1190,7 @@ If you use this project, please cite:
   year = {2026},
   publisher = {GitHub},
   howpublished = {\url{https://github.com/yourusername/mental-health-ebm}},
-  note = {Presented at ICASSP 2026 Industry Expert Speakers Session}
+  note = {Work in progress}
 }
 ```
 
@@ -1198,8 +1198,8 @@ If you use this project, please cite:
 
 ## Contact & Acknowledgments
 
-**Author**: Om [Last Name]  
-**Affiliation**: invent-AGI, IIT Kharagpur (Ph.D. Candidate)  
+**Author**: Om Sonie
+**Affiliation**: invent-AGI, Multimodal Conversational AI - IIT Kharagpur (Ph.D. Candidate) 
 **Website**: [superintelligencelab.co.uk](http://superintelligencelab.co.uk)
 
 **Acknowledgments**:
